@@ -1,6 +1,6 @@
-angular.module('kommentar', []).controller('kommentarCtrl', ['CommentExchangeService', '$scope', '$http', 
+angular.module('kommentar', []).controller('kommentarCtrl', ['CommentExchangeService', '$window', '$scope', '$http', 
 	
-	function(CommentExchangeService, $scope, $http) {
+	function(CommentExchangeService, $window, $scope, $http) {
 	
 		var self = this;
 		self.submitComment = submitComment;
@@ -21,9 +21,11 @@ angular.module('kommentar', []).controller('kommentarCtrl', ['CommentExchangeSer
 	        .then(
 	        function(result){
 	        	console.log(result);
+	        	self.comment.inhalt = '';
 	        },
 	        function(errResponse){
-	            console.error('Error while submitting Events');
+	            console.error('Error while submitting Comment');
+	            $window.alert('Could not save your Comment')
 	        }
 	        );
 	    };
