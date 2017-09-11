@@ -1,5 +1,6 @@
 package hello;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class MainController {
 	@RequestMapping(path="/add") 
 	public RestWrapperDTO addNewComment (@RequestBody Kommentar kommentar) {
 
-		userRepository.save(kommentar);
+		LocalDateTime now = LocalDateTime.now();
+
+		kommentar.setTime(java.sql.Timestamp.valueOf(now));
 		
+		userRepository.save(kommentar);
+	
 		
 		RestWrapperDTO wrapperDTO = new RestWrapperDTO();
 		wrapperDTO.setSuccess(true);
