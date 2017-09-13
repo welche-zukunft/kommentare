@@ -20,6 +20,7 @@ public class MainController {
 	@RequestMapping(path="/add") 
 	public RestWrapperDTO addNewComment (@RequestBody Kommentar kommentar) {
 
+		System.out.println("Added new comment");
 		LocalDateTime now = LocalDateTime.now();
 
 		kommentar.setTime(java.sql.Timestamp.valueOf(now));
