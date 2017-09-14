@@ -7,11 +7,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js" charset="utf-8"></script>
+	
+	<script type='text/javascript'>
+	  function fullCheck( obj ) {
+	   if ( obj.value.length == obj.maxLength ) {
+	     document.getElementById('alert').innerHTML = 'maximale Zeichenanzahl erreicht'; 
+	   }
+	   else { document.getElementById('alert').innerHTML = ""}
+	  }
+	</script>
+	
     <style>
 
       div { margin-left: 1.5em; margin-right:1.5em; }
       .pics {display: table; margin: 0 auto;}
-
+	  .alerts {color: red;}
     </style>	
 
 	<body ng-app="kommentar" ng-cloak class="ng-cloak">
@@ -23,10 +33,10 @@
 	
 			<form>
 				
-				<textarea style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10" placeholder="Bitte hier Idee eingeben"></textarea><br>
+				<textarea style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10" placeholder="Bitte hier Idee eingeben" maxlength="1500" onkeyup='fullCheck(this)'></textarea><br>
 				<button style="width:100%;" ng-click="ctrl.submitComment()">Speichern</button>
 			</form>
-		
+			<span class="alerts" id="alert"></span>
 		</div>
 		
 	</body>
