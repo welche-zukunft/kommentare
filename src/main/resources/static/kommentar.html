@@ -7,20 +7,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js" charset="utf-8"></script>
-	
+    <style>
+
+      div { margin-left: 1.5em; margin-right:1.5em; }
+      .pics {display: table; margin: 0 auto;}
+
+    </style>	
 
 	<body ng-app="kommentar" ng-cloak class="ng-cloak">
-
+		<div class="pics">
+		<img src="wz_logo.png" alt="Welche Zukunft?!" height="100px"></img>
+		</div>
+		<br><br>
 		<div ng-controller="kommentarCtrl as ctrl">
 	
 			<form>
-				<h2 style="width:100%; text-align:center;">Kommentar</h2><br>
-				<textarea style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10"></textarea><br>
-				<button style="width:100%;" ng-click="ctrl.submitComment()">Hochladen</button>
+				
+				<textarea style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10" placeholder="Bitte hier Idee eingeben"></textarea><br>
+				<button style="width:100%;" ng-click="ctrl.submitComment()">Speichern</button>
 			</form>
 		
 		</div>
-	
+		
 	</body>
 			
 	<script src="js/kommentar.js"></script>
