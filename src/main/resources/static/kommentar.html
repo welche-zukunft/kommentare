@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js" charset="utf-8"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js" charset="utf-8"></script>
 	
 	<script type='text/javascript'>
 	  function fullCheck( obj ) {
@@ -31,10 +32,15 @@
 		<br><br>
 		<div ng-controller="kommentarCtrl as ctrl">
 	
-			<form>
+			<form name="ctrl.kommentarform" novalidate>
 				
-				<textarea style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10" placeholder="Bitte hier Idee eingeben" maxlength="1500" onkeyup='fullCheck(this)'></textarea><br>
-				<button style="width:100%;" ng-click="ctrl.submitComment()">Senden</button>
+				<textarea name="kommentar" style="width:100%;" ng-model='ctrl.comment.inhalt' cols="50" rows="10" placeholder="Bitte hier Idee eingeben" ng-maxlength="280" onkeyup='fullCheck(this)'></textarea><br>
+				<div ng-messages="ctrl.kommentarform.kommentar.$error">
+							<p ng-message="maxlength">
+								<span style="color: red">Only 280 characters allowed.</span>
+							</p>
+				</div>
+				<button type="submit" style="width:100%;" ng-click="ctrl.submitComment()">Senden</button>
 			</form>
 			<span class="alerts" id="alert"></span>
 		</div>

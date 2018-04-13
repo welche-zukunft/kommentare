@@ -1,4 +1,4 @@
-angular.module('kommentar', []).controller('kommentarCtrl', ['CommentExchangeService', '$window', '$scope', '$http', 
+angular.module('kommentar', ['ngMessages']).controller('kommentarCtrl', ['CommentExchangeService', '$window', '$scope', '$http', 
 	
 	function(CommentExchangeService, $window, $scope, $http) {
 	
@@ -13,6 +13,12 @@ angular.module('kommentar', []).controller('kommentarCtrl', ['CommentExchangeSer
 	    
 	    
 	    function submitComment() {
+	    	
+	    	if (!self.kommentarform.$valid){
+	    		console.log('The comment data is not valid!');
+	    		return;
+	    	}
+	    	
 	    	console.log("submit comment ...");	
 	    				
 						

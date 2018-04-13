@@ -19,8 +19,18 @@ public class Kommentar {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss a z")
     private Date time;
     
-	@Column(length = 4000) 
+	@Column(length = 280) 
     private String inhalt;
+	
+	private String status = "NEW";
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
